@@ -58,14 +58,14 @@ public class LargestQuakes
     
         public void findLargetsQuakes(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedatasmall.atom";
+        String source = "data/nov20quakedata.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size());
 
         Location jakarta  = new Location(-6.211,106.845);
 
-        ArrayList<QuakeEntry> close = getLargest(list,5);
+        ArrayList<QuakeEntry> close = getLargest(list,3);
         for(int k=0; k < close.size(); k++){
             QuakeEntry entry = close.get(k);
             

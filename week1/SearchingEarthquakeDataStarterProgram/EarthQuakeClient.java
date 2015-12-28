@@ -9,6 +9,55 @@ public class EarthQuakeClient
     }
     
     
+    public ArrayList<QuakeEntry> filterByPhrase(ArrayList<QuakeEntry> quakeData,String where,
+    String phrase){
+        
+        
+         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
+            // Starts with
+        for(QuakeEntry qe : quakeData){
+            
+            if(where.equalsIgnoreCase("start"))
+            {
+                boolean  b = qe.getInfo().startsWith(phrase);  // true
+                if(b)answer.add(qe);
+            }
+            
+            // Ends with
+            if(where.equalsIgnoreCase("end"))
+            {
+                boolean  b = qe.getInfo().endsWith(phrase);  // true
+                if(b)answer.add(qe);
+            }
+            //b = string.endsWith("dam");             // true
+            
+            // Anywhere, including beginning
+            if(where.equalsIgnoreCase("any"))
+            {
+                boolean  b = qe.getInfo().indexOf(phrase) >= 0;  // true
+                if(b)answer.add(qe);
+            }
+           // b = string.indexOf("I am") >= 0;        // true
+            
+            // To ignore case, regular expressions must be used
+        }
+        
+        return answer;
+    }
+    
+      public void quakesByPhrase() {
+        EarthQuakeParser parser = new EarthQuakeParser();
+        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        String source = "data/nov20quakedata.atom";
+        ArrayList<QuakeEntry> list  = filterByPhrase(parser.read(source),"any","Creek");
+        System.out.println("read data for "+parser.read(source).size()+" quakes");
+        //dumpCSV(list);
+        for(QuakeEntry qe : list){ System.out.println(qe.toString());}
+        System.out.println("found "+list.size()+" quakes that match the criteria");
+
+    }
+    
+    
     public ArrayList<QuakeEntry> filterByDepth(ArrayList<QuakeEntry> quakeData,
     double minDepth, double maxDepth) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
@@ -25,8 +74,8 @@ public class EarthQuakeClient
     public void quakesOfDepth() {
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        String source = "data/nov20quakedatasmall.atom";
-        ArrayList<QuakeEntry> list  = filterByDepth(parser.read(source),-10000,-5000);
+        String source = "data/nov20quakedata.atom";
+        ArrayList<QuakeEntry> list  = filterByDepth(parser.read(source),-10000,-8000);
         System.out.println("read data for "+parser.read(source).size()+" quakes");
         //dumpCSV(list);
         for(QuakeEntry qe : list){ System.out.println(qe.toString());}
