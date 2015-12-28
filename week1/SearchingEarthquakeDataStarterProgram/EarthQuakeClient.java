@@ -7,6 +7,32 @@ public class EarthQuakeClient
     public EarthQuakeClient() {
         // TODO Auto-generated constructor stub
     }
+    
+    
+    public ArrayList<QuakeEntry> filterByDepth(ArrayList<QuakeEntry> quakeData,
+    double minDepth, double maxDepth) {
+        ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
+        // TODO
+        for(QuakeEntry qe : quakeData){
+            
+            if(qe.getDepth() > minDepth && qe.getDepth() < maxDepth)answer.add(qe);
+        }
+        
+
+        return answer;
+    }
+    
+    public void quakesOfDepth() {
+        EarthQuakeParser parser = new EarthQuakeParser();
+        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        String source = "data/nov20quakedatasmall.atom";
+        ArrayList<QuakeEntry> list  = filterByDepth(parser.read(source),-10000,-5000);
+        System.out.println("read data for "+parser.read(source).size()+" quakes");
+        //dumpCSV(list);
+        for(QuakeEntry qe : list){ System.out.println(qe.toString());}
+        System.out.println("found "+list.size()+" quakes that match the criteria");
+
+    }
 
     public ArrayList<QuakeEntry> filterByMagnitude(ArrayList<QuakeEntry> quakeData,
     double magMin) {
