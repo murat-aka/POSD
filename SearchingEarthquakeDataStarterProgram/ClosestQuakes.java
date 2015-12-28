@@ -15,7 +15,7 @@ public class ClosestQuakes
         // TO DO
         QuakeEntry minIndex = quakeData.get(0);
         
-        while(ret.size()!= 4){
+       
             
                  for(QuakeEntry qe : quakeData){
                     
@@ -27,12 +27,12 @@ public class ClosestQuakes
                       }
                         
                     
-                       
+                      if(ret.size()>=10)break; 
                  }
+                 
                  
         
         
-        }
         return ret;
     }
 
