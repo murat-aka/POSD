@@ -9,29 +9,32 @@
 import java.util.*;
 
 public class ClosestQuakes
-{
+{ 
     public ArrayList<QuakeEntry> getClosest(ArrayList<QuakeEntry> quakeData, Location current, int howMany){
         ArrayList<QuakeEntry> ret = new ArrayList<QuakeEntry>();
         // TO DO
-        QuakeEntry minIndex = quakeData.get(0);
+        int minIndex = 0;
         
-       
-            
-                 for(QuakeEntry qe : quakeData){
-                    
-                      if(qe.getLocation().distanceTo(current)< minIndex.getLocation().distanceTo(current)){
-                          
-                          minIndex = qe;
-                          ret.add(qe);
-                          
-                      }
-                        
-                    
-                      if(ret.size()>=10)break; 
-                 }
-                 
-                 
         
+        for(int j=0; j<howMany ;j++){
+           
+        
+            for(int k=0; k<quakeData.size() ;k++){
+                
+                if(quakeData.get(k).getLocation().distanceTo(current)<quakeData.get(minIndex).getLocation().distanceTo(current)){
+                  
+                  minIndex =k;   
+                
+                }
+                              
+            }
+        
+            ret.add(quakeData.get(minIndex));
+            quakeData.remove(minIndex);
+            minIndex=0;
+           
+           
+        }  
         
         return ret;
     }
@@ -45,7 +48,7 @@ public class ClosestQuakes
 
         Location jakarta  = new Location(-6.211,106.845);
 
-        ArrayList<QuakeEntry> close = getClosest(list,jakarta,10);
+        ArrayList<QuakeEntry> close = getClosest(list,jakarta,3);
         for(int k=0; k < close.size(); k++){
             QuakeEntry entry = close.get(k);
             double distanceInMeters = jakarta.distanceTo(entry.getLocation());
