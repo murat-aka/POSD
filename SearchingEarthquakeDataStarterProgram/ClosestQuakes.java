@@ -13,13 +13,32 @@ public class ClosestQuakes
     public ArrayList<QuakeEntry> getClosest(ArrayList<QuakeEntry> quakeData, Location current, int howMany){
         ArrayList<QuakeEntry> ret = new ArrayList<QuakeEntry>();
         // TO DO
-
+        QuakeEntry minIndex = quakeData.get(0);
+        
+        while(ret.size()!= 4){
+            
+                 for(QuakeEntry qe : quakeData){
+                    
+                      if(qe.getLocation().distanceTo(current)< minIndex.getLocation().distanceTo(current)){
+                          
+                          minIndex = qe;
+                          ret.add(qe);
+                          
+                      }
+                        
+                    
+                       
+                 }
+                 
+        
+        
+        }
         return ret;
     }
 
     public void findClosestQuakes(){
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "data/nov20quakedata.atom";
+        String source = "data/nov20quakedatasmall.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         System.out.println("read data for "+list.size());
