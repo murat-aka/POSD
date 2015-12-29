@@ -49,7 +49,7 @@ public class EarthQuakeClient
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
-        ArrayList<QuakeEntry> list  = filterByPhrase(parser.read(source),"any","Creek");
+        ArrayList<QuakeEntry> list  = filterByPhrase(parser.read(source),"any","Can");
         System.out.println("read data for "+parser.read(source).size()+" quakes");
         //dumpCSV(list);
         for(QuakeEntry qe : list){ System.out.println(qe.toString());}
@@ -75,7 +75,7 @@ public class EarthQuakeClient
         EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
-        ArrayList<QuakeEntry> list  = filterByDepth(parser.read(source),-10000,-8000);
+        ArrayList<QuakeEntry> list  = filterByDepth(parser.read(source),-4000,-2000);
         System.out.println("read data for "+parser.read(source).size()+" quakes");
         //dumpCSV(list);
         for(QuakeEntry qe : list){ System.out.println(qe.toString());}

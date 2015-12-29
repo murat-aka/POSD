@@ -43,6 +43,12 @@ public class PhraseFilter implements Filter{
     } 
     
     
+    public String getName(){
+        
+        return "Phrase";
+    }
+    
+    
 //       if(where.equalsIgnoreCase("start"))
 //             {
 //                 boolean  b = qe.getInfo().startsWith(phrase);  // true

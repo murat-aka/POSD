@@ -3,4 +3,6 @@ comment0.params=min\ max
 comment0.target=MagnitudeFilter(double,\ double)
 comment1.params=qe
 comment1.target=boolean\ satisfies(QuakeEntry)
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ getName()
+numComments=3

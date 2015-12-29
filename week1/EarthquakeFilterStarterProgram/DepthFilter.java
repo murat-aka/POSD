@@ -19,6 +19,10 @@ public class DepthFilter implements Filter{
     public boolean satisfies(QuakeEntry qe) { 
         return (qe.getDepth() >= depthMin && qe.getDepth() <= depthMax); 
     } 
+    
+    public String getName(){
+        return "Depth";
+    }
 
 
 

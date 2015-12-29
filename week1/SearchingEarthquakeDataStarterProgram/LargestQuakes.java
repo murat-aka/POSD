@@ -65,7 +65,7 @@ public class LargestQuakes
 
         Location jakarta  = new Location(-6.211,106.845);
 
-        ArrayList<QuakeEntry> close = getLargest(list,3);
+        ArrayList<QuakeEntry> close = getLargest(list,50);
         for(int k=0; k < close.size(); k++){
             QuakeEntry entry = close.get(k);
             
