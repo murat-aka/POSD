@@ -25,8 +25,14 @@ public class EarthQuakeClient2
         System.out.println("read data for "+list.size()+" quakes");
 
         EarthQuakeClient2 eqc = new EarthQuakeClient2(); 
-        Filter f = new MinMagFilter(4.0); 
-        ArrayList<QuakeEntry> m7  = eqc.filter(list, f); 
+        //Filter f = new MinMagFilter(4.0); 
+        //Filter f = new MagnitudeFilter(4.0,5.0);
+        Location tokyo = new Location(35.42,139.43);
+        Filter f= new DistanceFilter(tokyo,10000000);
+        ArrayList<QuakeEntry> m8  = filter(list, f); 
+        Filter f2 = new PhraseFilter("end","Japan");
+        //ArrayList<QuakeEntry> m8  = filter(list, f2);
+        ArrayList<QuakeEntry> m7  = filter(m8, f2); 
         for (QuakeEntry qe: m7) { 
             System.out.println(qe);
         } 
