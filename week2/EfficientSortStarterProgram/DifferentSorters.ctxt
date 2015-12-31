@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ sortWithCompareTo()
+comment0.target=void\ sortByLastWordInTitleThenByMagnitude()
 comment1.params=
-comment1.target=void\ sortByMagnitude()
+comment1.target=void\ sortWithCompareTo()
 comment2.params=
-comment2.target=void\ sortByDistance()
-numComments=3
+comment2.target=void\ sortByTitleAndDepth()
+comment3.params=
+comment3.target=void\ sortByMagnitude()
+comment4.params=
+comment4.target=void\ sortByDistance()
+numComments=5
