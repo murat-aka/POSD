@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=seed
+comment0.target=void\ setRandom(int)
+comment1.params=
+comment1.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=void\ buildMap()
+comment3.params=numChars
+comment3.target=java.lang.String\ getRandomText(int)
+comment4.params=key
+comment4.target=java.util.ArrayList\ getFollows(java.lang.String)
+numComments=5

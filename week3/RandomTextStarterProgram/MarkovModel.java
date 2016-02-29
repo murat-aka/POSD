@@ -1,20 +1,25 @@
 
 /**
- * Write a description of MarkovOne here.
+ * Write a description of MarkovModel here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 
+
 import java.util.Random;
 import java.util.*;
 
-public class MarkovOne {
-private String myText;
+public class MarkovModel {
+
+    
+    private String myText;
 	private Random myRandom;
+	private int myN;
 	
-	public MarkovOne() {
+	public MarkovModel(int N) {
 		myRandom = new Random();
+		myN = N;
 	}
 	
 	public ArrayList<String> getFollows(String key){
@@ -43,10 +48,10 @@ private String myText;
 	public String getRandomText(int numChars){
 		
 		StringBuffer sb =  new StringBuffer();
-		int index = myRandom.nextInt(myText.length()-1);
-		String key = myText.substring(index,index+1);
+		int index = myRandom.nextInt(myText.length()-myN);
+		String key = myText.substring(index,index+myN);
 		sb.append(key);
-		for(int k=0; k < numChars-1; k++){
+		for(int k=0; k < numChars-myN; k++){
 			
 		    ArrayList<String> follows = getFollows(key);
 		    if(follows.size() == 0){
@@ -56,7 +61,7 @@ private String myText;
 		    index = myRandom.nextInt(follows.size());
 		    String next = follows.get(index);
 		    sb.append(next);
-		    key = next;
+		    key = key.substring(1) + next;
 		}
 		
 		return sb.toString();

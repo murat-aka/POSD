@@ -9,29 +9,14 @@
 import java.util.Random;
 import java.util.*;
 
-public class MarkovOne {
-private String myText;
-	private Random myRandom;
+public class MarkovOne  extends AbstractMarkovModel{
+
 	
 	public MarkovOne() {
 		myRandom = new Random();
 	}
 	
-	public ArrayList<String> getFollows(String key){
-	    int pos=0;
-	    ArrayList<String> follows= new ArrayList<String>();
-	    
-	    while(myText.indexOf(key,pos)!=-1){
-    	    
-            
-	        pos=myText.indexOf(key,pos)+key.length();
-	        if(myText.length()<pos+1)break;
-	        follows.add(myText.substring(pos,pos+1));	 
-	        
-    	  
-    	}
-	   return follows;
-	}
+
 	public void setRandom(int seed){
 		myRandom = new Random(seed);
 	}

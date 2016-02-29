@@ -9,11 +9,11 @@
 import java.util.Random;
 import java.util.*;
 
-public class MarkovOne {
+public class MarkovTwo {
 private String myText;
 	private Random myRandom;
 	
-	public MarkovOne() {
+	public MarkovTwo() {
 		myRandom = new Random();
 	}
 	
@@ -43,10 +43,10 @@ private String myText;
 	public String getRandomText(int numChars){
 		
 		StringBuffer sb =  new StringBuffer();
-		int index = myRandom.nextInt(myText.length()-1);
-		String key = myText.substring(index,index+1);
+		int index = myRandom.nextInt(myText.length()-2);
+		String key = myText.substring(index,index+2);
 		sb.append(key);
-		for(int k=0; k < numChars-1; k++){
+		for(int k=0; k < numChars-2; k++){
 			
 		    ArrayList<String> follows = getFollows(key);
 		    if(follows.size() == 0){

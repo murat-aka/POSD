@@ -5,4 +5,6 @@ comment1.params=s
 comment1.target=void\ setTraining(java.lang.String)
 comment2.params=numChars
 comment2.target=java.lang.String\ getRandomText(int)
-numComments=3
+comment3.params=key
+comment3.target=java.util.ArrayList\ getFollows(java.lang.String)
+numComments=4
