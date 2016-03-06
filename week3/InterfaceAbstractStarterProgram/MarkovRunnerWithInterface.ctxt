@@ -5,4 +5,6 @@ comment1.params=
 comment1.target=void\ runMarkov()
 comment2.params=s
 comment2.target=void\ printOut(java.lang.String)
-numComments=3
+comment3.params=
+comment3.target=void\ compareMethods()
+numComments=4

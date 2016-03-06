@@ -37,6 +37,13 @@ public class MarkovRunnerWithInterface {
         
         MarkovFour mFour = new MarkovFour();
         runModel(mFour, st, size,seed);
+        
+        
+        size=50;
+        st = "yes-this-is-a-thin-pretty-pink-thistle";
+        st.replace('\n', ' ');
+        EfficientMarkovModel mEff = new EfficientMarkovModel(2);
+        runModel(mEff,st,size,seed);
 
     }
 
@@ -54,5 +61,33 @@ public class MarkovRunnerWithInterface {
 		}
 		System.out.println("\n----------------------------------");
 	}
+	
+	
+	public void compareMethods(){
+	    
+	    FileResource fr = new FileResource();
+		String st = fr.asString();
+		st = st.replace('\n', ' ');
+		int size = 1000;
+		int seed = 42;
+		
+        
+		long start1 = System.nanoTime();
+		//System.out.println("time: "+System.nanoTime());
+        MarkovModel mThree = new MarkovModel(2);
+        runModel(mThree, st, size,seed);
+      
+        
+        long start2 = System.nanoTime();
+        System.out.println("time: "+(start2-start1));
+        
+        EfficientMarkovModel mEff = new EfficientMarkovModel(2);
+        runModel(mEff,st,size,seed);
+        
+        long end = System.nanoTime();
+	    System.out.println("time: "+ (end-start2));
+	    
+	    
+	   }
 	
 }
